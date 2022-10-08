@@ -33,7 +33,7 @@ profile.placesLived = [
         length: 3,
     },
     {
-        place: 'Bremington, Washington',
+        place: 'Bremerton, Washington',
         length: 1,
     },
     {
@@ -54,28 +54,49 @@ document.querySelector('#photo').setAttribute('alt', profile.name);
 // Step 4: For each favorite food in the favoriteFoods property, create an HTML <li> element and place its value in the <li> element
 // Step 5: Append the <li> elements created above as children of the HTML <ul> element with an ID of favorite-foods
 const fav = document.querySelector('#favorite-foods');
-profile.favoriteFoods.forEach(item => {
-    let foods = document.createElement('li');
-    foods.innerHTML = profile.favoriteFoods[item];
-    fav.appendChild(foods)
+profile.favoriteFoods.forEach((item, index) => {
+    item = document.createElement('li');
+    item.innerHTML = profile.favoriteFoods[index];
+    fav.appendChild(item);
   });
 // Step 6: Repeat Step 4 for each hobby in the hobbies property
 // Step 7: Repeat Step 5 using the HTML <ul> element with an ID of hobbies
 const hob = document.querySelector('#hobbies');
-for (i = 0; i <= profile.hobbies.length - 1; i++) {
-    const toys = document.createElement('li');
-
-    toys.innerHTML = profile.hobbies[i];
-    hob.appendChild(toys)
-}
-
+profile.hobbies.forEach((item, index) => {
+    item = document.createElement('li');
+    item.innerHTML = profile.hobbies[index];
+    hob.appendChild(item);
+  });
 // Step 8: For each object in the <em>placesLived</em> property:
 // - Create an HTML <dt> element and put its place property in the <dt> element
 // - Create an HTML <dd> element and put its length property in the <dd> element
-
 // Step 9: Append the HTML <dt> and <dd> elements created above to the HTML <dl> element with an ID of places-lived
+
+
 const places = document.querySelector('#places-lived');
-Object.entries(profile.placesLived).forEach(item => {
-    console.log(item); // key
-    console.log(profile.placesLived[item]); // value
-});
+
+let place = profile.placesLived.map(element => element.place);
+let length = profile.placesLived.map(element => element.length);
+for (i = 0; i <= place.length - 1; i++) {
+    const pla = document.createElement('dt');
+
+    pla.innerHTML = place[i];
+    places.appendChild(pla);
+};
+for (i = 0; i <= length.length - 1; i++) {
+    const len = document.createElement('dd');
+
+    len.innerHTML = length[i];
+    places.appendChild(len);
+};
+
+//profile.placesLived.place.forEach((item, index) => {
+//    item = document.createElement('dt');
+//    item.innerHTML = profile.placesLived[place][index];
+//    places.appendChild(item);
+//});
+//profile.placesLived.length.forEach((item, index) => {
+//    item = document.createElement('dd');
+//    item.innerHTML = profile.placesLived[length][index];
+//    places.appendChild(item);
+//});
