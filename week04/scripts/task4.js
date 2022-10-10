@@ -55,7 +55,7 @@ document.querySelector('#photo').setAttribute('alt', profile.name);
 // Step 5: Append the <li> elements created above as children of the HTML <ul> element with an ID of favorite-foods
 const fav = document.querySelector('#favorite-foods');
 profile.favoriteFoods.forEach((item) => {
-    li = document.createElement('li');
+    let li = document.createElement('li');
     li.innerHTML = item;
     fav.appendChild(li);
   });
@@ -63,7 +63,7 @@ profile.favoriteFoods.forEach((item) => {
 // Step 7: Repeat Step 5 using the HTML <ul> element with an ID of hobbies
 const hob = document.querySelector('#hobbies');
 profile.hobbies.forEach((item) => {
-    li = document.createElement('li');
+    let li = document.createElement('li');
     li.innerHTML = item;
     hob.appendChild(li);
   });
