@@ -74,29 +74,11 @@ profile.hobbies.forEach((item, index) => {
 
 
 const places = document.querySelector('#places-lived');
-
-let place = profile.placesLived.map(element => element.place);
-let length = profile.placesLived.map(element => element.length);
-for (i = 0; i <= place.length - 1; i++) {
-    const pla = document.createElement('dt');
-
-    pla.innerHTML = place[i];
-    places.appendChild(pla);
-};
-for (i = 0; i <= length.length - 1; i++) {
-    const len = document.createElement('dd');
-
-    len.innerHTML = length[i];
-    places.appendChild(len);
-};
-
-//profile.placesLived.place.forEach((item, index) => {
-//    item = document.createElement('dt');
-//    item.innerHTML = profile.placesLived[place][index];
-//    places.appendChild(item);
-//});
-//profile.placesLived.length.forEach((item, index) => {
-//    item = document.createElement('dd');
-//    item.innerHTML = profile.placesLived[length][index];
-//    places.appendChild(item);
-//});
+profile.placesLived.forEach((element) => {
+    let dt = document.createElement('dt');
+    let dd = document.createElement('dd');
+    dt.innerHTML = element.place;
+    dd.innerHTML = element.length;
+    places.appendChild(dt);
+    places.appendChild(dd);
+});
