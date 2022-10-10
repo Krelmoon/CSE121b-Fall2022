@@ -54,18 +54,18 @@ document.querySelector('#photo').setAttribute('alt', profile.name);
 // Step 4: For each favorite food in the favoriteFoods property, create an HTML <li> element and place its value in the <li> element
 // Step 5: Append the <li> elements created above as children of the HTML <ul> element with an ID of favorite-foods
 const fav = document.querySelector('#favorite-foods');
-profile.favoriteFoods.forEach((item, index) => {
-    item = document.createElement('li');
-    item.innerHTML = profile.favoriteFoods[index];
-    fav.appendChild(item);
+profile.favoriteFoods.forEach((item) => {
+    li = document.createElement('li');
+    li.innerHTML = item;
+    fav.appendChild(li);
   });
 // Step 6: Repeat Step 4 for each hobby in the hobbies property
 // Step 7: Repeat Step 5 using the HTML <ul> element with an ID of hobbies
 const hob = document.querySelector('#hobbies');
-profile.hobbies.forEach((item, index) => {
-    item = document.createElement('li');
-    item.innerHTML = profile.hobbies[index];
-    hob.appendChild(item);
+profile.hobbies.forEach((item) => {
+    li = document.createElement('li');
+    li.innerHTML = item;
+    hob.appendChild(li);
   });
 // Step 8: For each object in the <em>placesLived</em> property:
 // - Create an HTML <dt> element and put its place property in the <dt> element
