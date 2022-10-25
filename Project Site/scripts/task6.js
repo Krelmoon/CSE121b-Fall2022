@@ -1,10 +1,11 @@
 /* Lesson 6 */
 
-
+// Set global variables one for main data from the fetch and one each for male and female pokemon on screen.
 let pokedata = [];
 let maleDefault = [];
 let femaleDefault = [];
 
+// Fetch function async promises to api only pulling first 151 entries (there are over 1000 pokemon now!).
 async function getPokemonList() {
   const promises = [];
   for (let i = 1; i <= 151 ; i++) 
@@ -14,6 +15,7 @@ async function getPokemonList() {
     };
   Promise.all(promises).then( results => 
     {
+      // trying to get info for a dateing profile only could display name and sprite(img)
     let pokemon = results.map(data => 
      ( { name   : data.name
        , id     : data.id
@@ -24,7 +26,7 @@ async function getPokemonList() {
       dostuff(pokemon);   
    });
   }
-
+// dostuff places fetch data in global array and sets up inital group of pokemon for site display
 function dostuff(data) {
   pokedata = data;
   maleDefault = pokedata.filter(obj => {
@@ -37,12 +39,14 @@ function dostuff(data) {
   outputFemale(femaleDefault);
 } 
 
+// wanted to make the reset function more reusable so I had the querySelector line closer to the call than in the function itself.
 function reset(element) {
   let clear = element
   while(clear.firstChild) {
     clear.removeChild(clear.firstChild);
 }
 }
+// radio buttons as selectors was something I wasn't sure was going to work but it did.
 document.querySelector('#date').addEventListener('click', () => {
   let maleclick = document.querySelectorAll('input[name="male"]');
   let femaleclick = document.querySelectorAll('input[name="female"]');
@@ -60,6 +64,7 @@ document.querySelector('#date').addEventListener('click', () => {
                         break;
                     }
                   }
+                  //I had a hard time implementing an obvious ES module here for the eggtest function it's quite posible I'm missing something simple.
   let decide = eggTest(selectedMale,selectedFemale);
   if (decide == true) {
     document.querySelector('#decide').innerHTML = "You Found an EGG!"
@@ -68,6 +73,7 @@ document.querySelector('#date').addEventListener('click', () => {
   }
 });
 
+// Still dont know the best way to get a good value out of a selection drop down. This one works if you don't pick the first thing on the menu first.
 document.querySelector('#maleChoice').addEventListener('change', () => {
   let select = document.querySelector('#maleChoice');
   let value = select.options[select.selectedIndex].value;
@@ -92,4 +98,5 @@ document.querySelector('#femaleChoice').addEventListener('change', () => {
   outputFemale(femaleDefault)
 });
 
+// placed here to get things started
 getPokemonList()

@@ -1,3 +1,4 @@
+// this was my origanal attempt to do ES modules one for each gender I should have been able to code this for one sequence that worked for both.
 function outputMale(data) {
   data.forEach(male => {
     let article = document.createElement('article');
